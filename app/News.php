@@ -8,4 +8,10 @@ class News extends Model
 {
 
 
+    public function image() {
+
+        return $this->belongsToMany('App\Image')->withTimestamps();
+
+    }
+
 }

@@ -8,14 +8,17 @@
 
     <h1>Новости</h1>
 
-    <ul>
-        @forelse($articles as $article)
+
+        @foreach($articles as $article)
+            <p style="margin-top: 70px; font-size: 10px; color: red; font-weight: bold;">{{ $article->created_at  }}</p>
+            <p>{{ $article->image }}</p>
+
             <li>
-                <a href="{{ $article->path() }}">{{ $article->title }}</a>
+                {{ $article->title }}
+
             </li>
-        @empty
-            <li>No news yet.</li>
-        @endforelse
-    </ul>
+            <p>{{ $article->description }}</p>
+
+        @endforeach
 
 @endsection

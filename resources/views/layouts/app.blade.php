@@ -63,7 +63,7 @@
         }
     </style>
 </head>
-<body>
+<body style="margin-left: 10%; margin-top: 5%; margin-right: 10%">
 
 @yield('content')
 
