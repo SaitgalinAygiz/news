@@ -15,6 +15,7 @@ class CreateImageTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('news_id');
             $table->string('image');
             $table->timestamps();
 

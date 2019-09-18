@@ -14,11 +14,20 @@ class NewsController extends Controller
     public function index() {
 
 
-        $articles = News::with('image')->get();
+        $articles = News::with('images')->get();
 
 
         return view('news', compact('articles'));
 
+
+
+    }
+
+    public function show(News $news) {
+
+
+        $images = $news->images()->get();
+        return view('article', array('news'=>$news, 'images'=>$images));
 
 
     }
