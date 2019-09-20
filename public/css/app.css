@@ -10659,7 +10659,7 @@ a.text-dark:focus {
 
 .update-delete-group {
   display: flex;
-  margin-bottom: 0px;
+  margin-bottom: -20px;
 }
 
 .news-title {

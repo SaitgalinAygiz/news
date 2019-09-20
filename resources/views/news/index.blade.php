@@ -36,7 +36,8 @@
         @endforeach
 
             </div>
-                <div class="update-delete-group">@if (auth()->check() && auth()->user()->role == 'admin')
+                @if (auth()->check() && auth()->user()->role == 'admin')
+                <div class="update-delete-group">
                     <a href="update/{{ $article->id }}" class="btn btn-light button-control" >Обновить</a>
 
                     {!! Form::open(array('url' => 'news/delete/' . $article->id, 'class' => 'pull-right button-control')) !!}
@@ -44,7 +45,8 @@
                     {!! Form::submit('Удалить', array('class' => 'btn btn-dark')) !!}
                     {!! Form::close() !!}
 
-                @endif</div>
+                </div>
+                @endif
 
     <a href="/news/{{ $article->id }}">
         <h3 class="news-title">
