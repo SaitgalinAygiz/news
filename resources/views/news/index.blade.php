@@ -14,11 +14,12 @@
 
     @endif
 
+
         @foreach($articles as $article)
 
             <div style="padding-left:20px; border: 10px solid  rgba(244,244,244,.5)">
             <p style=" margin-top:10px; font-size: 10px; color: red; font-weight: bold;">{{ $article->created_at->diffForHumans()  }}</p>
-
+                <div >
 
         @foreach ($article->images->chunk(1) as $chunk)
 
@@ -32,10 +33,9 @@
 
             </div>
 
-
-
-
         @endforeach
+
+            </div>
                 <div class="update-delete-group">@if (auth()->check() && auth()->user()->role == 'admin')
                     <a href="update/{{ $article->id }}" class="btn btn-light button-control" >Обновить</a>
 

@@ -1,7 +1,7 @@
 @extends ('layouts.app')
 
 @section('content')
-    <a href="/" class="btn btn-light">На главную</a>
+    <a href="/" class="btn btn-light main-button">На главную</a>
 
 
 
@@ -14,15 +14,15 @@
     @endforeach
     <div>{{ $news->description }}</div>
 
-
-
-    @if (auth()->check() && auth()->user()->role == 'admin')
-        <a href="/update/{{ $news->id }}" class="btn btn-light">Обновить</a>
-        {!! Form::open(array('url' => 'news/delete/' . $news->id, 'class' => 'pull-right')) !!}
-        {!! Form::hidden('_method', 'POST') !!}
-        {!! Form::submit('Удалить', array('class' => 'btn btn-dark')) !!}
-        {!! Form::close() !!}
-    @endif
+    <div class="update-delete-group" >
+        @if (auth()->check() && auth()->user()->role == 'admin')
+            <a href="/update/{{ $news->id }}" class="btn btn-light button-control">Обновить</a>
+            {!! Form::open(array('url' => 'news/delete/' . $news->id, 'class' => 'pull-right button-control')) !!}
+            {!! Form::hidden('_method', 'POST') !!}
+            {!! Form::submit('Удалить', array('class' => 'btn btn-dark')) !!}
+            {!! Form::close() !!}
+        @endif
+    </div>
 
 
 @endsection

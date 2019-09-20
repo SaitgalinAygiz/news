@@ -34,7 +34,7 @@
 
                     <button type="submit" class="btn btn-secondary">Опубликовать</button>
 
-                    <a href="/" class="btn btn-light">На главную</a>
+                    <a href="/" class="btn btn-light main-button">На главную</a>
                 </form>
             </div>
         </div>

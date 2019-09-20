@@ -9,7 +9,9 @@
 
 
 #app {
-    margin: 10%
+
+    margin: 2% 20% 20% 20%;
+
 }
 
 .btn {
@@ -24,7 +26,7 @@
 
 .update-delete-group {
     display: flex;
-    margin-bottom: -20px;
+    margin-bottom: 0px;
 }
 
 .news-title {
@@ -39,5 +41,15 @@
     margin-top: 20px;
     display: grid;
 }
+
+a {
+    color: #000;
+}
+
+a:hover {
+    color: #000
+}
+
+
 
 

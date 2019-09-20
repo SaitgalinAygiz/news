@@ -10645,7 +10645,7 @@ a.text-dark:focus {
 }
 
 #app {
-  margin: 10%;
+  margin: 2% 20% 20% 20%;
 }
 
 .btn {
@@ -10659,7 +10659,7 @@ a.text-dark:focus {
 
 .update-delete-group {
   display: flex;
-  margin-bottom: -20px;
+  margin-bottom: 0px;
 }
 
 .news-title {
@@ -10673,5 +10673,13 @@ a.text-dark:focus {
 .image-upload {
   margin-top: 20px;
   display: grid;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  color: #000;
 }
 
