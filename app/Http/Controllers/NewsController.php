@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Image;
 use App\News;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -17,7 +13,7 @@ class NewsController extends Controller
         $articles = News::with('images')->get();
 
 
-        return view('news', compact('articles'));
+        return view('news.index', compact('articles'));
 
 
 
@@ -27,10 +23,82 @@ class NewsController extends Controller
 
 
         $images = $news->images()->get();
-        return view('article', array('news'=>$news, 'images'=>$images));
+        return view('news.article', array('news'=>$news, 'images'=>$images));
 
 
     }
+
+    public function create()
+    {
+        return view('news.create');
+    }
+
+    public function edit(News $news) {
+
+        $images = $news->images()->get();
+
+        return view('news.update', array('news' => $news, 'images' => $images));
+
+    }
+
+    public function update(Request $request, News $news) {
+
+        $this->validate(request(), [
+            'title' => 'required|min:3',
+            'description' => 'required',
+            'image' => 'image'
+        ]);
+
+
+        $news->update(['title' => request('title'),
+            'description' => request('description'),
+            'user_id' => auth()->user()->id]);
+
+        if ($request->has('image')) {
+
+            $news->images()->update(['image' => request()->file('image')->store('images', 'public')]);
+
+        }
+
+        return redirect('/');
+
+    }
+
+
+
+    public function store(Request $request)
+    {
+
+        $this->validate(request(), [
+            'title' => 'required|min:3',
+            'description' => 'required',
+            'image' => 'required | image'
+        ]);
+
+        $news = News::create([
+            'title' => request('title'),
+            'description' => request('description'),
+            'user_id' => auth()->user()->id
+
+        ]);
+
+        $news->images()->create(['image' => request()->file('image')->store('images', 'public')]);
+
+        return redirect('/');
+    }
+
+    public function delete(News $news) {
+
+
+        $news->delete();
+
+
+        return redirect('/');
+
+
+    }
+
+
 
 
 }

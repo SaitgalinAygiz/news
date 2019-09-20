@@ -11,5 +11,23 @@
 |
 */
 
+use App\Http\Controllers\NewsController;
+
 Route::get('/', 'NewsController@index');
-Route::get('/article/{news}', 'NewsController@show');
+Route::get('/news/{news}', 'NewsController@show');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::group(['middleware' => 'admin'], function () {
+
+    Route::get('/create', 'NewsController@create');
+
+    Route::get('/update/{news}', 'NewsController@edit');
+
+    Route::post('news/store', 'NewsController@store');
+    Route::post('/news/delete/{news}', 'NewsController@delete');
+    Route::post('news/update/{news}', 'NewsController@update');
+
+
+});

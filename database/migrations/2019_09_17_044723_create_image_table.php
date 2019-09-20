@@ -19,6 +19,9 @@ class CreateImageTable extends Migration
             $table->string('image');
             $table->timestamps();
 
+            $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
+
+
         });
     }
 

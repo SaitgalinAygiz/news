@@ -1,1 +1,43 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+#app {
+    margin: 10%
+}
+
+.btn {
+    margin-bottom: 30px;
+
+}
+
+.button-control {
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+.update-delete-group {
+    display: flex;
+    margin-bottom: -20px;
+}
+
+.news-title {
+    margin-top: 10px;
+}
+
+#title {
+    margin-bottom: 20px;
+}
+
+.image-upload {
+    margin-top: 20px;
+    display: grid;
+}
+
 
