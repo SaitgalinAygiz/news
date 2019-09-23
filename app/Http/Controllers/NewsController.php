@@ -16,7 +16,6 @@ class NewsController extends Controller
         return view('news.index', compact('articles'));
 
 
-
     }
 
     public function show(News $news) {
@@ -72,17 +71,21 @@ class NewsController extends Controller
         $this->validate(request(), [
             'title' => 'required|min:3',
             'description' => 'required',
-            'image' => 'required | image'
+            'image' => 'image'
         ]);
 
         $news = News::create([
             'title' => request('title'),
             'description' => request('description'),
             'user_id' => auth()->user()->id
-
         ]);
 
-        $news->images()->create(['image' => request()->file('image')->store('images', 'public')]);
+        if ($request->has('image')) {
+
+            $news->images()->create(['image' => request()->file('image')->store('images', 'public')]);
+
+        }
+
 
         return redirect('/');
     }
@@ -91,7 +94,6 @@ class NewsController extends Controller
 
 
         $news->delete();
-
 
         return redirect('/');
 
