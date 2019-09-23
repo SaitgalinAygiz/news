@@ -11,27 +11,35 @@
                     {{ csrf_field() }}
                     <div class="form-group">
 
-                        <label for="body">Обновить новость</label>
+                        <h2>Обновить новость</h2>
 
-                        <textarea name="title" id="title"  class="form-control @error('title') is-invalid @enderror"  placeholder="Title" rows="1">{{ $news->title }}</textarea>
-                        @error('title')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
-                        <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror "  placeholder="Description" rows="5">{{ $news->description }}</textarea>
+                        <div class="form-group">
+                            <input type="text" name="title" id="title"  class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"  placeholder="Title"  value="{{ $news->title }}">
+                        </div>
 
-                        @error('description')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
+                        <div class="form-group">
+                            <textarea type="text" name="description" id="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" rows="5"  placeholder="Description">{{ $news->description }}</textarea>
+                        </div>
+
 
                         <div class="image-upload">
                             <label for="image">Выберите картинку</label>
                             <input name ="image" id="image" type="file" multiple name="file[]">
                         </div>
                     </div>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger" style="margin-top: 5px">
+
+                            @foreach($errors->all() as $error)
+
+                                <li>{{ $error }}</li>
+
+                            @endforeach
+
+                        </div>
+
+                    @endif
 
                     <button type="submit" class="btn btn-secondary">Опубликовать</button>
 

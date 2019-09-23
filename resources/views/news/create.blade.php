@@ -11,21 +11,28 @@
                     {{ csrf_field() }}
                     <div class="form-group">
 
-                        <label for="body">Создать новость</label>
+                        <h2>Создать новость</h2>
 
-                        <textarea name="title" id="title"  class="form-control @error('title') is-invalid @enderror"  placeholder="Title" rows="1"></textarea>
-                        @error('title')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
-                        <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror "  placeholder="Description" rows="5"></textarea>
+                        <div class="form-group">
+                           <input type="text" name="title" id="title"  class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"  placeholder="Title"  value="{{ old('title') }}">
+                        </div>
 
-                        @error('description')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
+                        <div class="form-group">
+                        <textarea type="text" name="description" id="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}"  placeholder="Description">{{ old('description') }}</textarea>
+
+                        </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger" style="margin-top: 5px">
+
+                                    @foreach($errors->all() as $error)
+
+                                        <li>{{ $error }}</li>
+
+                                    @endforeach
+
+                            </div>
+
+                        @endif
 
                         <div class="image-upload">
                               <label for="image">Выберите картинку</label>
@@ -36,6 +43,10 @@
                     <button type="submit" class="btn btn-secondary">Опубликовать</button>
 
                     <a href="/" class="btn btn-light main-button">На главную</a>
+
+
+
+
                 </form>
             </div>
         </div>
