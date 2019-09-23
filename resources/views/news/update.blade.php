@@ -5,8 +5,9 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
-                <form method="POST" action="{{ '/news/update/'. $news->id }}" enctype="multipart/form-data">
+                <form method="POST" action="/news/{{ $news->id }}" enctype="multipart/form-data">
 
+                    {{ method_field('PATCH') }}
                     {{ csrf_field() }}
                     <div class="form-group">
 

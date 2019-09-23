@@ -16,11 +16,20 @@
 
     <div class="update-delete-group" >
         @if (auth()->check() && auth()->user()->role == 'admin')
-            <a href="/update/{{ $news->id }}" class="btn btn-light button-control">Обновить</a>
-            {!! Form::open(array('url' => 'news/delete/' . $news->id, 'class' => 'pull-right button-control')) !!}
-            {!! Form::hidden('_method', 'POST') !!}
-            {!! Form::submit('Удалить', array('class' => 'btn btn-dark')) !!}
-            {!! Form::close() !!}
+            <a href="/news/{{ $news->id }}/edit" class="btn btn-light button-control">Обновить</a>
+            <form method="POST" action="/news/{{ $news->id }}">
+
+                {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" class="pull-right button-control btn btn-dark">Удалить</button>
+                    </div>
+
+                </div>
+
+            </form>
         @endif
     </div>
 

@@ -9,21 +9,17 @@ class NewsController extends Controller
 {
     public function index() {
 
-
         $articles = News::with('images')->get();
 
 
         return view('news.index', compact('articles'));
 
-
     }
 
     public function show(News $news) {
 
-
         $images = $news->images()->get();
         return view('news.article', array('news'=>$news, 'images'=>$images));
-
 
     }
 

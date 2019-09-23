@@ -22,28 +22,33 @@
                 <div >
 
         @foreach ($article->images->chunk(1) as $chunk)
-
             <div>
                 @foreach($chunk as $image)
                     <img src="/storage/{{$image->image}}" width="500" height="300">
-
-
                 @endforeach
-
-
             </div>
-
         @endforeach
 
             </div>
                 @if (auth()->check() && auth()->user()->role == 'admin')
                 <div class="update-delete-group">
-                    <a href="update/{{ $article->id }}" class="btn btn-light button-control" >Обновить</a>
+                    <a href="news/{{ $article->id }}/edit" class="btn btn-light button-control" >Обновить</a>
 
-                    {!! Form::open(array('url' => 'news/delete/' . $article->id, 'class' => 'pull-right button-control')) !!}
-                    {!! Form::hidden('_method', 'POST') !!}
-                    {!! Form::submit('Удалить', array('class' => 'btn btn-dark')) !!}
-                    {!! Form::close() !!}
+
+                    <form method="POST" action="/news/{{ $article->id }}">
+
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="pull-right button-control btn btn-dark">Удалить</button>
+                            </div>
+
+                        </div>
+
+                    </form>
+
 
                 </div>
                 @endif

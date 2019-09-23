@@ -22,13 +22,13 @@ Auth::routes();
 Route::group(['middleware' => 'admin'], function () {
 
     Route::get('/create', 'NewsController@create');
-    Route::get('/update/{news}', 'NewsController@edit');
+    Route::get('/news/{news}/edit', 'NewsController@edit');
 
     Route::post('/news/store', 'NewsController@store');
 
-    Route::post('/news/update/{news}', 'NewsController@update');
+    Route::patch('/news/{news}', 'NewsController@update');
 
-    Route::post('/news/delete/{news}', 'NewsController@delete');
+    Route::delete('/news/{news}', 'NewsController@delete');
 
 
 });
