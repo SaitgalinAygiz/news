@@ -32,10 +32,10 @@
             </div>
                 @if (auth()->check() && auth()->user()->role == 'admin')
                 <div class="update-delete-group">
-                    <a href="news/{{ $article->id }}/edit" class="btn btn-light button-control" >Обновить</a>
+                    <a href="news/{{ $article->slug }}/edit" class="btn btn-light button-control" >Обновить</a>
 
 
-                    <form method="POST" action="/news/{{ $article->id }}">
+                    <form method="POST" action="/news/{{ $article->slug }}">
 
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
@@ -53,7 +53,7 @@
                 </div>
                 @endif
 
-    <a href="/news/{{ $article->id }}">
+    <a href="/news/{{ $article->slug }}">
         <h3 class="news-title">
             {{ $article->title }}
 

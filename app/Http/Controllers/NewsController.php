@@ -30,6 +30,8 @@ class NewsController extends Controller
 
     public function edit(News $news) {
 
+
+
         $images = $news->images()->get();
 
         return view('news.update', array('news' => $news, 'images' => $images));
@@ -51,9 +53,15 @@ class NewsController extends Controller
 
         if ($request->has('image')) {
 
-            $news->images()->update(['image' => request()->file('image')->store('images', 'public')]);
-
+            if ($news->images()->first()) {
+                $news->images()->update(['image' => request()->file('image')->store('images', 'public')]);
+            } else {
+                $news->images()->create(['image' => request()->file('image')->store('images', 'public')]);
+            }
         }
+
+
+
 
         return redirect('/');
 

@@ -10683,3 +10683,8 @@ a:hover {
   color: #000;
 }
 
+.article-description p {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
