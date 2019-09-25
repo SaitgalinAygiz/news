@@ -31,7 +31,16 @@
 
             </form>
         @endif
+
+
+
+
+
     </div>
+
+
+    <div id="map" style="height: 400px; margin-top: 30px;"></div>
+
 
 
 @endsection

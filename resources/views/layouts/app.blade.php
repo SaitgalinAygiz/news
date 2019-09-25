@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=e60c5104-78e4-4d10-a647-3a329eaf694f" type="text/javascript"></script>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
