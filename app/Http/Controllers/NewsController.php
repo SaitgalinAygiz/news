@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewsStoreRequest;
+use App\Http\Requests\NewsUpdateRequest;
 use App\News;
-use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class NewsController extends Controller
 {
     public function index() {
 
         $articles = News::with('images')->get();
-
 
         return view('news.index', compact('articles'));
 
@@ -39,18 +38,16 @@ class NewsController extends Controller
 
     }
 
-    public function update(Request $request, News $news) {
+    public function update(NewsUpdateRequest $request, News $news) {
 
-        $this->validate(request(), [
-            'title' => 'required|min:3',
-            'description' => 'required',
-            'image' => 'image'
-        ]);
+        $request->validated();
 
-
-        $news->update(['title' => request('title'),
+        $news->update([
+            'title' => request('title'),
             'description' => request('description'),
-            'user_id' => auth()->user()->id]);
+            'user_id' => auth()->user()->id
+            ]
+        );
 
         if ($request->has('image')) {
 
@@ -61,23 +58,15 @@ class NewsController extends Controller
             }
         }
 
-
-
-
         return redirect('/');
-
     }
 
 
 
-    public function store(Request $request)
+    public function store(NewsStoreRequest $request)
     {
 
-        $this->validate(request(), [
-            'title' => 'required|min:3',
-            'description' => 'required',
-            'image' => 'image'
-        ]);
+        $request->validated();
 
         $news = News::create([
             'title' => request('title'),
@@ -86,24 +75,18 @@ class NewsController extends Controller
         ]);
 
         if ($request->has('image')) {
-
             $news->images()->create(['image' => request()->file('image')->store('images', 'public')]);
-
         }
-
         $news->coords()->create();
-
 
         return redirect('/');
     }
 
     public function delete(News $news) {
 
-
         $news->delete();
 
         return redirect('/');
-
 
     }
 
