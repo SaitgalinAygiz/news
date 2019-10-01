@@ -55,7 +55,7 @@
             var isAdmin = false;
         </script>
     @endif
-    <yandex-map id="yandexMap" style="height: 400px; margin-top: 10px;"></yandex-map>
+    <yandex-map-x id="yandex-map" style="height: 400px; margin-top: 10px;"></yandex-map-x>
 
 
 

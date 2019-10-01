@@ -3,8 +3,8 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import YandexMap from "./components/YandexMap";
-import YmapPlugin from 'vue-yandex-maps'
+import YandexMap from "./components/YandexMap.vue";
+import YmapPlugin from 'vue-yandex-maps';
 import eventHub from 'vue-event-hub';
 
 
@@ -41,7 +41,7 @@ require('./bootstrap');
 const app = new Vue({
     el: '#app',
     components: {
-        'yandex-map' : YandexMap,
+        'yandex-map-x' : YandexMap,
     }
 });
 

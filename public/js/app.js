@@ -52448,7 +52448,7 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_YandexMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/YandexMap */ "./resources/js/components/YandexMap.vue");
+/* harmony import */ var _components_YandexMap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/YandexMap.vue */ "./resources/js/components/YandexMap.vue");
 /* harmony import */ var vue_yandex_maps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-yandex-maps */ "./node_modules/vue-yandex-maps/dist/vue-yandex-maps.js");
 /* harmony import */ var vue_event_hub__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-event-hub */ "./node_modules/vue-event-hub/index.js");
 /* harmony import */ var vue_event_hub__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_event_hub__WEBPACK_IMPORTED_MODULE_2__);
@@ -52485,7 +52485,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 var app = new Vue({
   el: '#app',
   components: {
-    'yandex-map': _components_YandexMap__WEBPACK_IMPORTED_MODULE_0__["default"]
+    'yandex-map-x': _components_YandexMap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
