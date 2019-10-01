@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\News;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class NewsController extends Controller
 {
@@ -81,7 +82,7 @@ class NewsController extends Controller
         $news = News::create([
             'title' => request('title'),
             'description' => request('description'),
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
         ]);
 
         if ($request->has('image')) {
@@ -89,6 +90,8 @@ class NewsController extends Controller
             $news->images()->create(['image' => request()->file('image')->store('images', 'public')]);
 
         }
+
+        $news->coords()->create();
 
 
         return redirect('/');

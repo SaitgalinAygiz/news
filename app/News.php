@@ -11,9 +11,12 @@ class News extends Model
 
     use HasSlug;
 
-
-
-    protected $fillable = ['title', 'description', 'image', 'user_id'];
+    protected $fillable = [
+        'title',
+        'description',
+        'image',
+        'user_id'
+    ];
 
 
 
@@ -23,7 +26,13 @@ class News extends Model
     }
 
     public function owner() {
+
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function coords() {
+
+        return $this->hasMany(Coords::class, 'news_id');
     }
 
 

@@ -11,7 +11,6 @@
 |
 */
 
-use App\Http\Controllers\NewsController;
 
 Route::get('/', 'NewsController@index');
 Route::get('/news/{news}', 'NewsController@show');
@@ -23,12 +22,19 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('/create', 'NewsController@create');
     Route::get('/news/{news}/edit', 'NewsController@edit');
-
     Route::post('/news/store', 'NewsController@store');
-
     Route::patch('/news/{news}', 'NewsController@update');
-
     Route::delete('/news/{news}', 'NewsController@delete');
+
+
+    Route::post('/news/{news}/coords/store', 'CoordsController@store');
+
+
+
+    Route::patch('/news/{news}/coords/{coords}/update', 'CoordsController@update');
+
+    Route::delete('/news/{news}/coords/{coords}', 'CoordsController@destroy');
+
 
 
 });
